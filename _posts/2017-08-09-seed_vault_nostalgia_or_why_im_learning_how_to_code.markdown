@@ -22,10 +22,10 @@ If I had to pick a quote about why I'm learning to code, I'd rather choose a quo
 
 ![](http://i.imgur.com/dGsyc0E.jpg)
 
-For the first time in my life, I feel like I may have found a home. I love the culture of programming (even though I'm writing this a few days after the infamous [Google document](http://gizmodo.com/exclusive-heres-the-full-10-page-anti-diversity-screed-1797564320) about women and miniorities surfaced). I'm excited to be able to build something of value one day, maybe something [funny](https://processing.org/examples/tickle.html) or even something that ultimately helps people. I adore the feeling of solving a problem or building something new and seeing it work. I [love the feeling](https://en.wikipedia.org/wiki/Flow_(psychology) of working on something for hours, without even noticing. 
+For the first time in my life, I feel like I may have found a home. I love the culture of programming (even though I'm writing this a few days after the infamous [Google document](http://gizmodo.com/exclusive-heres-the-full-10-page-anti-diversity-screed-1797564320) about women and miniorities surfaced). I'm excited to be able to build something of value one day, maybe something [funny](https://processing.org/examples/tickle.html) or even something that ultimately helps people. I adore the feeling of solving a problem or building something new and seeing it work. I [love the feeling](https://www.psychologytoday.com/articles/199707/finding-flow) of working on something for hours, without even noticing. 
 
 One of my favorite things about coding is that there are a million free tutorials on the internet about anything you'd want to learn - I suppose this is the great internet seed vault. Any time you get stuck, there's an answer, because someone somewhere took the time to write an answer, often with great care. What an incredible community.
 
 When I was in college, I was one of two girls in my 80-person "Theory of Computing". I found coding to be [incredibly alienating](http://www.npr.org/sections/money/2014/10/21/357629765/when-women-stopped-coding). No one in class wanted to work with me, and I was an extrovert who enjoyed chatting with people above all else. It made perfect sense back then for me not to pursue becoming a developer. Over the years, something changed. I now crave technical and intellectual challenges above all, but also find programming to be more collaborative these days. I have friends who enjoy coding too! 
 
-It was a journey getting here, but I feel at home. 
+I'm excited to see where I go from here.
