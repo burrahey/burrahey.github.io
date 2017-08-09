@@ -1,0 +1,21 @@
+# Site settings
+title: Archana Burra's Blog
+header-img: img/home-bg.png
+email: burra.archana@gmail.com
+copyright_name: burrahey
+description: > # this means to ignore newlines until "baseurl:"
+  Musings by Archana Burra
+baseurl: "" # the subpath of your site, e.g. /blog
+twitter_username: 
+github_username:  burrahey
+learn_profile: burrahey
+email_username: burra.archana@gmail.com
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+paginate: 5
+exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
+
+gems: [jekyll-paginate, jekyll-feed]
