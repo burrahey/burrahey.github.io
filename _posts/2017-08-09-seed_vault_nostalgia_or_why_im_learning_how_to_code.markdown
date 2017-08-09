@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Seed Vault, Nostalgia or why I'm learning how to code."
-date:   2017-08-09 23:20:08 +0000
+date:   2017-08-09 19:20:09 -0400
 ---
 
 Did you know that somewhere near the North Pole, there's a seed vault that keeps a veritable Noah's Ark of all the major variety of seeds in case there's a global catastrophe? 
