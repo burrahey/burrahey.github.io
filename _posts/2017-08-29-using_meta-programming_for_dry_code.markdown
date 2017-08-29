@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Using meta-programming for DRY code"
-date:   2017-08-29 18:40:54 +0000
+date:   2017-08-29 14:40:54 -0400
 ---
 
 
