@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "Guard[rails] "
-date:       2017-11-19 02:32:34 +0000
+date:       2017-11-18 21:32:35 -0500
 permalink:  guard_rails
 ---
 
@@ -39,7 +39,9 @@ I found this on stack exchange, but I think this little snippet best exemplifies
   end
 ```
 
-What a beautiful little helper method. Any time an object has an associated error, it'll make the errors pretty and return them to you. Otherwise, it quietly returns a nil, not making a peep until it has to. 
+What a beautiful little helper method. Any time an object has an associated error, it'll make the errors pretty and return them to you. Otherwise, it quietly returns a nil, not making a peep until it has to. When you generalize, you have some useful properties. 
+
+A short, romantic tangent: It reminds me of my final year of college, when I was taking DNA topology and studying knot theory. It was a very cursory exploration for only a semester, but we looked at knots defined only by their mathematical properties, and tried to make useful some conclusions about them. For example, given a set of orientations of a knot (e.g. the string going from left to right is crossing over on the top), we would try to prove if they could be untied easily by pulling the right string, or if they were locked solid: this could gave us useful insights into how certain proteins in the human body could behave, even though all we had were two-dimensional black & white photos of these microscopic things. 
 
 I can't believe how much fun this was. I'm excited to hopefully contribute some useful things to open source communities in the future. Hopefully my scheduling app turns into something that reduces time and effort for my colleagues. 
 
