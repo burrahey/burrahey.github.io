@@ -10,9 +10,9 @@ I wanted to write out how the combine reduce function works for the sole purpose
 
 Okay, so Redux offers a Combine Reduce function which combines all of your reducers. 
 
-Reducers generally look something like this (to steal from the content):
+Reducers generally look something like this (please excuse the verbose names):
 ```
-export function books(state = [], action){
+export function booksReducerFunction(state = [], action){
   switch (action.type) {
   case "ADD_BOOK":
     return [].concat(state, action.payload)
@@ -24,7 +24,7 @@ export function books(state = [], action){
   }
 }
 
-export function recommendedBooks(state = [], action){
+export function recommendedBooksReducerFunction(state = [], action){
   switch (action.type) {
   case "ADD_RECOMMENDED_BOOK":
     return [].concat(state, action.payload)
@@ -45,29 +45,7 @@ state = { books: [], recommendedBooks: [] }
 Okay, so Redux allows you pass reducers into the combineReducers function to receive a single reducer that does the job of all the reducers you passed in. Let's define a single reducer object with all of our reducers:
 
 ```
-singleReducerObject = 
-
-{ books:  function books(state = [], action){
-  switch (action.type) {
-  case "ADD_BOOK":
-    return [].concat(state, action.payload)
-  case "REMOVE_BOOK":
-    let idx = state.indexOf(action.payload)
-    return [].concat(state.slice(0, idx), state.slice(idx + 1, state.length))
-  default:
-    return state
-  }
-}, 
-recommendedBooks: recommendedBooks(state = [], action){
-  switch (action.type) {
-  case "ADD_RECOMMENDED_BOOK":
-    return [].concat(state, action.payload)
-  case "REMOVE_RECOMMENDED_BOOK":
-    let idx = state.indexOf(action.payload)
-    return [].concat(state.slice(0, idx), state.slice(idx + 1, state.length))
-  default:
-    return state
-  }}}
+singleReducerObject = { books: booksReducerFunction, recommendedBooks: recommendedBooksReducerFunction }
 ```
 
 Okay, now we can receive our single reducer function by simply typing:
@@ -91,19 +69,7 @@ export function combineReducers(reducers){
 
 So let's break this down: what's happening here?
 
-Well, you can notice that we're returning a function that takes in two arguments, state and action, and returns a single final state object as follows:
-```
-function (state = {}, action) => {
-  return Object.keys(reducers).reduce(
-    (nextState, key)=>{
-      nextState[key] = reducers[key](state[key], action);
-      return nextState
-    }, {}
-  )
-}
-```
-
-The function returns a state object by calling a reduce function on the array of the individual reducers:
+Well, you can notice that we're returning a function that takes in two arguments, `state` (defaulted to an empty object, {})  and `action`, and returns a single final `nextState` object. The function returns a state object by calling a reduce function on the array of the individual reducers:
 ```
 Object.keys(reducers).reduce(
   (nextState, key)=>{
@@ -117,22 +83,17 @@ In other words, here's the array we're performing the reduce method on:
 [books, recommendedBooks] 
 ```
 
-Remember, a reduce method simply takes an array and returns a single value by combining them in some way. The arguments to a reduce function are 1) the function that combines the values of the array and 2) a starting value (in this case, an empty array (since we don't want to mutate anything in functional programming). 
+Remember, a reduce method simply takes an array and returns a single value by combining them in some way. The arguments to a reduce function are 1) the function that combines the values of the array and 2) a starting value (in this case, an empty array (`{}`) (since we don't want to mutate anything in functional programming). 
 
-On the first iteration of the reduce method, we're updating the recommended books portion of the state and adding that to an empty object:
-state.recommendedBooks = recommendedBooks(state.recommendedBooks, action)
-
-When we're done, we'll return a state object as follows, and use that as a starting point for our next iteration:
+On the first iteration of the reduce method, we're updating the recommended books portion of the state and adding that to an empty object: When we're done, we'll return a state object as follows, and use that as a starting point for our next iteration:
 ```
-state = { recommendedBooks: recommendedBooks(state.recommendedBooks, action) 
+state = { recommendedBooks: recommendedBooks(state.recommendedBooks, action) }
 ```
 
 For example, if the action type was to add a recommended book, this might evaluvate to something like:
 ```
-state = {recommendedBooks: [ { name: "Gödel, Escher, Bach: an Eternal Golden Braid", datePrinted: 1979 }  ]
+state = { recommendedBooks: [ { name: "Gödel, Escher, Bach: an Eternal Golden Braid", datePrinted: 1979 }  ]  }
 ```
-
-Wow. Really not feeling creative today! 
 
 Moving on, for the second iteration of reduce, we're still updating the state object but now we're doing the books portion of it:
 ```
@@ -145,6 +106,4 @@ state = { recommendedBooks: recommendedBooks(state.recommendedBooks, action),
 books: books(state.books, action) }
 ```
 
-This also explains why if an action type exists in multiple reducers, it will run through all of those changes (e.g. for example, let's say both the *books* and *recommendedBooks* reducers have an 'ADD_BOOK' action type defined in their case statements: then we would add books to both arrays in the state object.
-
-POJOs: no magic whatsoever.
+This also explains why if an action type exists in multiple reducers, it will run through all of those changes (e.g. for example, let's say both the *books* and *recommendedBooks* reducers have an 'ADD_BOOK' action type defined in their case statements: then we would add books to both arrays in the state object. The end!
