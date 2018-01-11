@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "Combine Reduce Function w/ an example"
-date:       2018-01-11 03:21:58 +0000
+date:       2018-01-10 22:21:58 -0500
 permalink:  combine_reduce_function_w_an_example
 ---
 
