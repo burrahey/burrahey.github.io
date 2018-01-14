@@ -37,7 +37,7 @@ export function recommendedBooksReducerFunction(state = [], action){
 }
 ```
 
-As you can see, they take in a state object and an action object and based on the action type, they make changes to the state and return the state. The state final combined state may look something like this:
+As you can see, they take in a state object and an action object and based on the action type, they make changes to the state and return the state. Notice that the initial default value for the state is not an object but an array - this is because the state final combined state will be one or many key-value pairs that may look something like this:
 ```
 state = { books: [], recommendedBooks: [] }
 ```
