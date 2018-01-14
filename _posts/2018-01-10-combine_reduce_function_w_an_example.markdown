@@ -12,7 +12,7 @@ Okay, so Redux offers a Combine Reduce function which combines all of your reduc
 
 Reducers generally look something like this (please excuse the verbose names):
 ```
-export function booksReducerFunction(state = [], action){
+export function booksReducerFunction(state = { books: [] }, action){
   switch (action.type) {
   case "ADD_BOOK":
     return [].concat(state, action.payload)
@@ -24,7 +24,7 @@ export function booksReducerFunction(state = [], action){
   }
 }
 
-export function recommendedBooksReducerFunction(state = [], action){
+export function recommendedBooksReducerFunction(state = { recommendedBooks: [] }, action){
   switch (action.type) {
   case "ADD_RECOMMENDED_BOOK":
     return [].concat(state, action.payload)
@@ -37,7 +37,7 @@ export function recommendedBooksReducerFunction(state = [], action){
 }
 ```
 
-As you can see, they take in a state object and an action object and based on the action type, they make changes to the state and return the state. Notice that the initial default value for the state is not an object but an array - this is because the state final combined state will be one or many key-value pairs that may look something like this:
+As you can see, they take in state and action objects as parameters and based on the action type, they make changes to the state and return the modified state. Notice that the initial default value for the state is an object with an empty array. The final combined state will be a single object with one or more arrays that represent the state for each reducer: 
 ```
 state = { books: [], recommendedBooks: [] }
 ```
