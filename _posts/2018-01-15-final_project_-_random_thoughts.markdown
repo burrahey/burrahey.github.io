@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "Final Project - random thoughts"
-date:       2018-01-15 21:05:10 +0000
+date:       2018-01-15 16:05:11 -0500
 permalink:  final_project_-_random_thoughts
 ---
 
@@ -17,13 +17,15 @@ But the meatiest bit of this project was checking the Connect Four board for win
 Well, there are about two trillion ways to win according to this [Numberphile](https://www.youtube.com/watch?v=yDWPi1pZ0Po&t=36s) video and because my app was clickable the entire real time, I had to make sure that after each player played, the board was checked as quickly and efficiently as possible. A Connect Four board is traditionally 6x7, so that's a lot of cells to check for each turn. Obviously a nested array structure seemed most conducive to the nested loops I could see myself writing.
 
 Well, the first thing you have to realize is that you only need to check the spot where the newest token was placed, and you only need to check to see if the most recent player has won. However, in a given move, a player could win in the following ways:
+
 1) **Horizontal:** there are up to four ways to win here, with the most recent token being the left-most place to the right-most place (e.g. [000XXXX], [00XXXX0], [0XXXX00], [XXXX00]
+
 2) **Vertical:** if your token ended up at least four rows high, you could win by getting four down (that's only one way to win)
+
 3) **Diagonal:**  there are up to eight ways to win here (four ways on each diagonal: imagine an 'X' shape with our token in the center). 
 
-Okay, cool, so what's the most efficient way to test all of them? Here are some of the thoughts my brain had:
-* Should I go for a checksum? E.g if the values of the rows added up to a certain number, then you know it's a win. However, this involved the same number of operations as simply checking two values but was potentially more confusing with more chance of bugs. I also briefly experimented with entering in "undefined" values rather than zeros and it felt super wrong so I nixed that idea.
-* Should I represent my arrays as zeros or should I fill the arrays as users enter in their tokens? In other words, should my default game look like this:
+Okay, cool, so what's the most efficient way to test all of them? I wondered, should I go for a checksum? E.g if the values of the rows added up to a certain number, then you know it's a win. However, this involved the same number of operations as simply checking two values but was potentially more confusing with more chance of bugs. I also briefly experimented with entering in "undefined" values rather than zeros and it felt super wrong so I nixed that idea. I also wondered if I should I represent my arrays as zeros or should I fill the arrays as users enter in their tokens? In other words, should my default game look like this:
+
 ```
 const defaultGame = [
   [0,0,0,0,0,0,0],
@@ -33,7 +35,7 @@ const defaultGame = [
   [0,0,0,0,0,0,0],
   [0,0,0,0,0,0,0]
 ];
-```
+``` 
 
 Or this?
 
@@ -42,14 +44,15 @@ const defaultGame = [
   [],
   [],
   [],
-  [],  
+  [],
 	[],
   []
 ];
 ```
 
 I ended up going with the first one because it made displaying information easier, and again, if I was checking length every time to make sure we don't go out of bounds, I wasn't sure if it was going to be an "optimization" at all. In the final implementation, you'll notice that I don't waste time looking for out of bounds values for the most part, but I do check some empty arrays, which this method may have avoided.
-* Finally, I also thought about what I could hold in my state or even in the function itself in order to make computation more simple. Would storing a hash somewhere with the values of the relationships reduce the number of checks I do? For example, we check a lot of the values multiple times for similarity. Ultimately, I knew that it was best to keep your state lean, and I didn't see that much benefit to increasing the amount of information I stored. 
+
+Finally, I also thought about what I could hold in my state or even in the function itself in order to make computation more simple. Would storing a hash somewhere with the values of the relationships reduce the number of checks I do? For example, we check a lot of the values multiple times for similarity. Ultimately, I knew that it was best to keep your state lean, and I didn't see that much benefit to increasing the amount of information I stored. 
 
 Well, my implementation was fairly straightforward after all that:
 https://github.com/burrahey/connect-four/blob/master/client/src/BoardCheckingFunctions.js
