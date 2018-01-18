@@ -54,8 +54,7 @@ I ended up going with the first one because it made displaying information easie
 
 Finally, I also thought about what I could hold in my state or even in the function itself in order to make computation more simple. Would storing a hash somewhere with the values of the relationships reduce the number of checks I do? For example, we check a lot of the values multiple times for similarity. Ultimately, I knew that it was best to keep your state lean, and I didn't see that much benefit to increasing the amount of information I stored. 
 
-Well, my implementation was fairly straightforward after all that:
-https://github.com/burrahey/connect-four/blob/master/client/src/BoardCheckingFunctions.js
+Well, my implementation was fairly straightforward after all that. You can find it [here](https://github.com/burrahey/connect-four/blob/master/client/src/BoardCheckingFunctions.js).
 
 First, I check horizontals because they're generally possible first:
 ```
